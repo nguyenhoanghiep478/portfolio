@@ -51,10 +51,16 @@ export default function Hero() {
     return () => clearInterval(titleTimer)
   }, [isIntersecting])
 
-  const handleCVDownload = (type: "backend" | "frontend") => {
-    console.log(`Downloading ${type} CV`)
-    setShowCVModal(false)
-  }
+ const handleCVDownload = (type: "backend" | "frontend") => {
+  setShowCVModal(false);
+
+  const link = document.createElement("a");
+  link.href = "/resume.pdf"; 
+  link.download = "nguyenhoanghiep-resume.pdf"; 
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
 
   return (
     <>
