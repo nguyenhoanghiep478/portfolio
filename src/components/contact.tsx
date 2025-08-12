@@ -2,22 +2,28 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState,FormEvent,ChangeEvent } from "react"
 import emailjs from 'emailjs-com';
-import { title } from "process";
+
+interface FormData {
+    name: string;
+    email: string;
+    message: string;
+    title: string;
+}
 export default function Contact() {
-    const [formData, setFormData] = useState({
+    const [formData, setFormData] = useState<FormData>({
         name: '',
         email: '',
         message: '',
         title: ''
     });
 
-    const handleChange = (e) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         emailjs.send(
@@ -29,17 +35,18 @@ export default function Contact() {
                 message: formData.message,
                 title: formData.title
             },
-            'fCnG1ujrcN6Scb1qe'       // Public Key
+            'fCnG1ujrcN6Scb1qe'     // Public Key
         )
-            .then((result) => {
+            .then(() => {
                 alert('Message sent successfully!');
-                setFormData({ name: '', email: '', message: '' , title: '' }); 
+                setFormData({ name: '', email: '', message: '', title: '' });
             })
             .catch((error) => {
                 console.error(error);
                 alert('Failed to send message.');
             });
     };
+
 
     return (
         <section id="contact" className="py-20 relative">
