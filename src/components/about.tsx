@@ -14,7 +14,7 @@ export default function About() {
       <div className="container about-grid">
         <Reveal className="portrait-wrap">
           {/* Swap /image-about.jpg for a professional headshot when ready */}
-          <img className="portrait" src="/image-about.jpg" alt="Nguyen Hoang Hiep" />
+          <img className="portrait" src="/image-about.jpg?v=2" alt="Nguyen Hoang Hiep" />
           <span className="portrait-tag">
             <MapPin size={13} /> Ho Chi Minh City
           </span>
