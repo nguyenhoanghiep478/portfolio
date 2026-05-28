@@ -1,82 +1,61 @@
+import { Code2, Server, Database, TestTube, Layers, Cloud, Cpu, type LucideIcon } from "lucide-react";
+import Reveal from "./reveal";
+
+type Item = { l: string; logo?: string };
+type Group = { Icon: LucideIcon; title: string; items: Item[] };
+
+// Brand glyphs from Simple Icons, tinted neutral (A8B3BF) to stay calm on dark.
+const si = (slug: string) => `https://cdn.simpleicons.org/${slug}/A8B3BF`;
+
+const GROUPS: Group[] = [
+  { Icon: Code2, title: "Languages", items: [
+    { l: "Java", logo: si("openjdk") }, { l: "TypeScript", logo: si("typescript") }, { l: "JavaScript", logo: si("javascript") } ] },
+  { Icon: Server, title: "Backend", items: [
+    { l: "Spring Boot", logo: si("springboot") }, { l: "REST API" }, { l: "JWT", logo: si("jsonwebtokens") }, { l: "Kafka", logo: si("apachekafka") } ] },
+  { Icon: Database, title: "Database & Cache", items: [
+    { l: "PostgreSQL", logo: si("postgresql") }, { l: "SQL" }, { l: "Redis", logo: si("redis") } ] },
+  { Icon: TestTube, title: "Testing & Logging", items: [
+    { l: "JUnit", logo: si("junit5") }, { l: "Mockito" }, { l: "SLF4J" }, { l: "Logback" } ] },
+  { Icon: Layers, title: "Frontend", items: [
+    { l: "Next.js", logo: si("nextdotjs") }, { l: "React.js", logo: si("react") } ] },
+  { Icon: Cloud, title: "Cloud & Infra", items: [
+    { l: "AWS EC2", logo: si("amazonec2") }, { l: "Cloudflare Workers", logo: si("cloudflareworkers") }, { l: "R2", logo: si("cloudflare") }, { l: "Docker", logo: si("docker") }, { l: "Linux", logo: si("linux") }, { l: "Git", logo: si("git") } ] },
+  { Icon: Cpu, title: "Concepts", items: [
+    { l: "OOP" }, { l: "DSA" }, { l: "Distributed Systems" }, { l: "Microservices" }, { l: "Concurrency" } ] },
+];
+
 export default function Skills() {
-  const skills = [
-    { name: "Next.js", level: 95, color: "green" },
-    { name: "TypeScript", level: 90, color: "blue" },
-    { name: "Java", level: 95, color: "pink" },
-    { name: "Python", level: 60, color: "purple" },
-    { name: "UI/UX Design", level: 50, color: "green" },
-    { name: "AI/ML", level: 60, color: "blue" },
-  ]
-
-  const getColorClasses = (color: string) => {
-    const colors = {
-      green: "border-green-400 text-green-400",
-      blue: "border-blue-400 text-blue-400",
-      pink: "border-pink-400 text-pink-400",
-      purple: "border-purple-400 text-purple-400",
-    }
-    return colors[color as keyof typeof colors]
-  }
-
-  const getProgressColor = (color: string) => {
-    const colors = {
-      green: "bg-green-400",
-      blue: "bg-blue-400",
-      pink: "bg-pink-400",
-      purple: "bg-purple-400",
-    }
-    return colors[color as keyof typeof colors]
-  }
-
   return (
-    <section id="skills" className="py-20 relative">
-      <div className="max-w-6xl mx-auto px-6">
-        <h2 className="font-mono text-4xl md:text-5xl font-bold text-center mb-12 neon-text">SKILLS</h2>
-
-        <div className="grid md:grid-cols-2 gap-8">
-          {skills.map((skill, index) => (
-            <div key={skill.name} className={`neon-border p-6 bg-gray-900/30 ${getColorClasses(skill.color)}`}>
-              <div className="flex justify-between items-center mb-4">
-                <span className="font-mono text-lg">{skill.name}</span>
-                <span className="font-mono text-sm">{skill.level}%</span>
-              </div>
-              <div className="w-full bg-gray-800 h-2 rounded-full overflow-hidden">
-                <div
-                  className={`h-full ${getProgressColor(skill.color)} transition-all duration-1000 ease-out`}
-                  style={{
-                    width: `${skill.level}%`,
-                    animationDelay: `${index * 0.2}s`,
-                  }}
-                />
-              </div>
-            </div>
-          ))}
+    <section className="section" id="stack">
+      <div className="container">
+        <div className="section-head">
+          <Reveal>
+            <span className="eyebrow">// 03 — Stack</span>
+            <h2>Technologies I work with</h2>
+            <p>A backend-first toolkit, with enough frontend to ship end-to-end.</p>
+          </Reveal>
         </div>
-
-        <div className="mt-16 text-center">
-          <div className="inline-block neon-border p-6 bg-gray-900/50">
-            <h3 className="font-mono text-xl text-green-400 mb-4">TECH STACK</h3>
-            <div className="flex flex-wrap gap-3 justify-center">
-              {[
-                "Next.js",
-                "Spring Boot",
-                "Spring Data JPA",
-                "Spring Security",
-                "PostgreSQL",
-                "Kafka",
-                "Docker",
-              ].map((tech) => (
-                <span
-                  key={tech}
-                  className="px-3 py-1 border border-gray-600 text-gray-300 font-mono text-sm hover:border-green-400 hover:text-green-400 transition-colors duration-300"
-                >
-                  {tech}
+        <div className="skill-groups">
+          {GROUPS.map((g, gi) => (
+            <Reveal className="skill-card" key={g.title} delay={(gi % 2) * 80}>
+              <div className="skill-card-head">
+                <span className="si">
+                  <g.Icon size={18} />
                 </span>
-              ))}
-            </div>
-          </div>
+                <h3>{g.title}</h3>
+              </div>
+              <div className="skill-badges">
+                {g.items.map((it) => (
+                  <span className="badge" key={it.l}>
+                    {it.logo && <img src={it.logo} alt="" loading="lazy" />}
+                    {it.l}
+                  </span>
+                ))}
+              </div>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>
-  )
+  );
 }

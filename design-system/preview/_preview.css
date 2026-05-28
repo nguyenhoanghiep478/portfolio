@@ -1,0 +1,48 @@
+/* Shared frame for Design System preview cards. Each card imports
+   ../colors_and_type.css first, then this. Keep cards minimal — show the
+   specimen directly, no titles (the asset name renders outside the card). */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  background: var(--bg-0);
+  color: var(--fg-2);
+  font-family: var(--font-body);
+}
+
+.card {
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-height: 100%;
+}
+
+.row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.col { display: flex; flex-direction: column; gap: 10px; }
+.spread { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+
+.meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--fg-3);
+  letter-spacing: 0.02em;
+}
+.meta-accent { color: var(--accent); }
+
+/* swatch helpers */
+.swatch {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+.chip {
+  height: 64px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+}
+.chip-label { display: flex; flex-direction: column; gap: 2px; }
+.chip-name { font-family: var(--font-mono); font-size: 11px; color: var(--fg-2); }
+.chip-val  { font-family: var(--font-mono); font-size: 10px; color: var(--fg-3); }

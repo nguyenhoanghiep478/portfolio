@@ -1,69 +1,62 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
+import { useEffect, useState } from "react";
+import { Menu, X } from "lucide-react";
+
+const LINKS = [
+  { href: "#about", label: "About" },
+  { href: "#experience", label: "Experience" },
+  { href: "#stack", label: "Stack" },
+  { href: "#work", label: "Work" },
+];
 
 export default function Navigation() {
-  const [activeSection, setActiveSection] = useState("hero")
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = ["hero", "about", "skills", "projects", "contact"]
-      const scrollPosition = window.scrollY + 100
-
-      for (const section of sections) {
-        const element = document.getElementById(section)
-        if (element) {
-          const offsetTop = element.offsetTop
-          const offsetHeight = element.offsetHeight
-
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section)
-            break
-          }
-        }
-      }
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-    }
-  }
-
-  const navItems = [
-    { id: "hero", label: "Home" },
-    { id: "about", label: "About" },
-    { id: "skills", label: "Skills" },
-    { id: "projects", label: "Projects" },
-    { id: "contact", label: "Contact" },
-  ]
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm border-b border-green-500/30">
-      <div className="max-w-6xl mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
-          <div className="font-mono text-xl font-bold neon-text">{"Nguyễn Hoàng Hiệp"}</div>
-
-          <div className="hidden md:flex space-x-8">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className={`font-mono text-sm transition-all duration-300 hover:text-green-400 ${
-                  activeSection === item.id ? "text-green-400 neon-text" : "text-gray-400"
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
-        </div>
+    <header className={`nav ${scrolled ? "scrolled" : ""}`}>
+      <div className="container nav-inner">
+        <a href="#top" className="nav-brand">
+          hiep<b>.</b>dev
+        </a>
+        <nav className="nav-links">
+          {LINKS.map((l) => (
+            <a key={l.href} href={l.href}>
+              {l.label}
+            </a>
+          ))}
+          <a href="#contact" className="nav-cta">
+            Contact
+          </a>
+        </nav>
+        <button
+          className="nav-burger"
+          aria-label="Toggle menu"
+          onClick={() => setOpen((o) => !o)}
+        >
+          {open ? <X size={22} /> : <Menu size={22} />}
+        </button>
       </div>
-    </nav>
-  )
+      {open && (
+        <div className="mobile-menu">
+          {LINKS.map((l) => (
+            <a key={l.href} href={l.href} onClick={() => setOpen(false)}>
+              {l.label}
+            </a>
+          ))}
+          <a href="#contact" onClick={() => setOpen(false)}>
+            Contact
+          </a>
+        </div>
+      )}
+    </header>
+  );
 }

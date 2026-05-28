@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_preview.css">
+<style>
+  .nav { display:flex; align-items:center; justify-content:space-between; background:rgba(15,18,23,0.8); backdrop-filter:blur(12px); border:1px solid var(--border); border-radius:var(--radius-md); padding:13px 18px; }
+  .brand { font-family:var(--font-mono); font-size:14px; color:var(--fg-1); font-weight:600; }
+  .brand b { color:var(--accent); }
+  .links { display:flex; gap:22px; align-items:center; }
+  .links a { font-size:14px; color:var(--fg-3); transition:color var(--dur-fast); }
+  .links a.active { color:var(--fg-1); }
+  .links a:hover { color:var(--accent); }
+  .navcta { font-size:13px; font-weight:600; color:var(--accent-fg); background:var(--accent); padding:7px 14px; border-radius:var(--radius-md); }
+</style>
+</head>
+<body>
+<div class="card">
+  <nav class="nav">
+    <span class="brand">hiep<b>.</b>dev</span>
+    <div class="links">
+      <a class="active">About</a>
+      <a>Experience</a>
+      <a>Stack</a>
+      <a class="navcta">Contact</a>
+    </div>
+  </nav>
+  <div class="meta">Sticky top nav — bg-1 at 80% + 12px blur, hairline border. Active link in fg-1, hover→sky-blue, contact as filled CTA.</div>
+</div>
+</body>
+</html>

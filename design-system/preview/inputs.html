@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_preview.css">
+<style>
+  .field { display:flex; flex-direction:column; gap:6px; }
+  .field label { font-family:var(--font-mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--fg-3); }
+  .field input, .field textarea { font-family:var(--font-body); font-size:15px; color:var(--fg-1); background:var(--bg-inset); border:1px solid var(--border); border-radius:var(--radius-md); padding:11px 14px; outline:none; transition:all var(--dur-fast) var(--ease-soft); }
+  .field input::placeholder { color:var(--fg-4); }
+  .field.focused input { border-color:var(--accent); box-shadow:var(--ring-focus); }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="field">
+    <label>Your email</label>
+    <input placeholder="you@company.com" value="">
+  </div>
+  <div class="field focused">
+    <label>Message</label>
+    <input value="Let's talk about a backend role.">
+  </div>
+  <div class="meta">Inputs — sunken bg-inset well + hairline. Focus: sky-blue border + 3px ring. Mono uppercase labels.</div>
+</div>
+</body>
+</html>

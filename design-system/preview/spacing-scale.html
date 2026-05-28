@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_preview.css">
+<style>
+  .sp-row { display:flex; align-items:center; gap:14px; }
+  .sp-bar { height:14px; background:var(--accent); border-radius:3px; }
+  .sp-tok { font-family:var(--font-mono); font-size:11px; color:var(--fg-2); width:64px; }
+  .sp-val { font-family:var(--font-mono); font-size:11px; color:var(--fg-3); }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="col" style="gap:9px;">
+    <div class="sp-row"><span class="sp-tok">space-1</span><div class="sp-bar" style="width:4px"></div><span class="sp-val">4px</span></div>
+    <div class="sp-row"><span class="sp-tok">space-2</span><div class="sp-bar" style="width:8px"></div><span class="sp-val">8px</span></div>
+    <div class="sp-row"><span class="sp-tok">space-3</span><div class="sp-bar" style="width:12px"></div><span class="sp-val">12px</span></div>
+    <div class="sp-row"><span class="sp-tok">space-4</span><div class="sp-bar" style="width:16px"></div><span class="sp-val">16px</span></div>
+    <div class="sp-row"><span class="sp-tok">space-5</span><div class="sp-bar" style="width:24px"></div><span class="sp-val">24px</span></div>
+    <div class="sp-row"><span class="sp-tok">space-6</span><div class="sp-bar" style="width:32px"></div><span class="sp-val">32px</span></div>
+    <div class="sp-row"><span class="sp-tok">space-7</span><div class="sp-bar" style="width:48px"></div><span class="sp-val">48px</span></div>
+    <div class="sp-row"><span class="sp-tok">space-8</span><div class="sp-bar" style="width:64px"></div><span class="sp-val">64px</span></div>
+  </div>
+  <div class="meta">4px base scale. Section rhythm uses clamp(64–128px); content max-width 1120px.</div>
+</div>
+</body>
+</html>

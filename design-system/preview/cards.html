@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_preview.css">
+<style>
+  .cards { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .pcard { background:var(--bg-2); border:1px solid var(--border); border-radius:var(--radius-lg); padding:20px; box-shadow:var(--shadow-2); transition:all var(--dur-base) var(--ease-out); cursor:pointer; }
+  .pcard:hover { border-color:var(--accent-line); background:var(--bg-3); transform:translateY(-3px); box-shadow:var(--shadow-3); }
+  .pcard .ic { width:36px; height:36px; border-radius:var(--radius-md); background:var(--accent-dim); display:flex; align-items:center; justify-content:center; color:var(--accent); margin-bottom:12px; }
+  .pcard .ic svg { width:19px; height:19px; }
+  .pcard h3 { font-family:var(--font-display); font-size:16px; color:var(--fg-1); margin-bottom:6px; }
+  .pcard p { font-size:13px; color:var(--fg-3); line-height:1.5; }
+  .hint { font-family:var(--font-mono); font-size:10px; color:var(--accent); }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="cards">
+    <div class="pcard">
+      <div class="ic"><i data-lucide="server"></i></div>
+      <h3>Microservices</h3>
+      <p>Spring Boot services with layered architecture and event streaming over Kafka.</p>
+    </div>
+    <div class="pcard" style="border-color:var(--accent-line); background:var(--bg-3); transform:translateY(-3px); box-shadow:var(--shadow-3);">
+      <div class="ic"><i data-lucide="database"></i></div>
+      <h3>Data layer <span class="hint">← hover</span></h3>
+      <p>Optimized PostgreSQL queries, indexing & transactions; Redis caching.</p>
+    </div>
+  </div>
+  <div class="meta">Card — bg-2 + hairline + shadow-2. Hover: border→sky-blue, surface lifts, −3px. No colored left-stripe, no heavy shadow.</div>
+</div>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

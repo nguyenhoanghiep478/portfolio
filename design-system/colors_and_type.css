@@ -1,0 +1,201 @@
+/* ============================================================================
+   Hiep Nguyen — Portfolio Design System
+   colors_and_type.css — foundational + semantic tokens
+
+   Direction: clean, minimal, professional DARK MODE for a Java backend engineer.
+   A restrained sky-blue / cyan accent reads dependable and technical — the modern,
+   professional counterpoint to the legacy neon/cyberpunk theme. Slate-neutral, cool darks.
+   Fonts: Space Grotesk (display), DM Sans (body), JetBrains Mono (code/labels).
+   ============================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* ---------------------------------------------------------------- COLOR */
+  /* Surfaces — deep cool slate, never pure black. Lowest → highest. */
+  --bg-0:          #0A0C10;   /* page background, deepest */
+  --bg-1:          #0F1217;   /* sticky nav / sunken sections */
+  --bg-2:          #141921;   /* card surface */
+  --bg-3:          #1B212B;   /* elevated / hover surface */
+  --bg-inset:      #07090C;   /* code blocks, wells */
+
+  /* Borders & dividers */
+  --border:        #222A34;   /* default hairline */
+  --border-strong: #2E3845;   /* emphasized / focus-within */
+  --border-faint:  #181E26;   /* barely-there separators */
+
+  /* Foreground / text */
+  --fg-1:          #E9EEF3;   /* primary text, headings */
+  --fg-2:          #A8B3BF;   /* secondary / body */
+  --fg-3:          #6C7884;   /* tertiary / captions, muted */
+  --fg-4:          #49525C;   /* faint / disabled */
+
+  /* Accent — professional sky-blue / cyan (backend-engineer, dependable) */
+  --accent:        #38BDF8;   /* primary accent */
+  --accent-bright: #7DD3FC;   /* hover / highlight */
+  --accent-deep:   #0EA5E9;   /* pressed / dense fills */
+  --accent-fg:     #04141F;   /* text/icon on an accent fill */
+  --accent-dim:    rgba(56, 189, 248, 0.12);  /* tinted backgrounds */
+  --accent-line:   rgba(56, 189, 248, 0.35);  /* tinted borders */
+  --accent-glow:   rgba(56, 189, 248, 0.30);  /* soft focus glow */
+
+  /* Semantic (used sparingly — accent carries most weight) */
+  --success:       #34D399;   /* green stays for genuine "success" only */
+  --info:          #818CF8;   /* indigo, distinct from the blue accent */
+  --info-dim:      rgba(129, 140, 248, 0.12);
+  --warning:       #FBBF24;
+  --warning-dim:   rgba(251, 191, 36, 0.12);
+  --danger:        #F87171;
+  --danger-dim:    rgba(248, 113, 113, 0.12);
+
+  /* ----------------------------------------------------------- TYPE STACK */
+  --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-body:    'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Fluid type scale (semantic) */
+  --text-display:  clamp(2.75rem, 1.5rem + 5vw, 5rem);   /* hero name */
+  --text-h1:       clamp(2rem, 1.3rem + 2.6vw, 3rem);
+  --text-h2:       clamp(1.5rem, 1.1rem + 1.4vw, 2.125rem);
+  --text-h3:       clamp(1.2rem, 1rem + 0.6vw, 1.4rem);
+  --text-lead:     clamp(1.05rem, 0.98rem + 0.4vw, 1.25rem);
+  --text-body:     1rem;
+  --text-small:    0.875rem;
+  --text-mono-sm:  0.8125rem;
+  --text-eyebrow:  0.75rem;   /* uppercase mono labels */
+
+  /* Weights */
+  --w-regular: 400;
+  --w-medium:  500;
+  --w-semi:    600;
+  --w-bold:    700;
+
+  /* Line heights */
+  --lh-tight:  1.05;
+  --lh-snug:   1.25;
+  --lh-normal: 1.55;
+  --lh-relaxed: 1.7;
+
+  /* Letter spacing */
+  --ls-tight:   -0.02em;
+  --ls-display: -0.03em;
+  --ls-normal:  0;
+  --ls-eyebrow: 0.18em;   /* tracked-out uppercase labels */
+
+  /* --------------------------------------------------------------- SPACE */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+  --section-y: clamp(64px, 10vw, 128px);   /* vertical rhythm between sections */
+  --container:  1120px;                      /* max content width */
+  --container-narrow: 760px;                 /* prose / reading width */
+
+  /* --------------------------------------------------------------- RADII */
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   14px;
+  --radius-xl:   20px;
+  --radius-pill: 999px;
+
+  /* ------------------------------------------------------------ SHADOWS */
+  /* Dark-mode shadows lean on deep blacks + a hairline top highlight. */
+  --shadow-1: 0 1px 2px rgba(0,0,0,0.4);
+  --shadow-2: 0 4px 16px -4px rgba(0,0,0,0.5);
+  --shadow-3: 0 12px 32px -8px rgba(0,0,0,0.6);
+  --shadow-glow: 0 0 0 1px var(--accent-line), 0 8px 30px -8px var(--accent-glow);
+  --ring-focus: 0 0 0 3px var(--accent-glow);
+
+  /* --------------------------------------------------------------- MOTION */
+  --ease-out:   cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-soft:  cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast:   140ms;
+  --dur-base:   240ms;
+  --dur-slow:   600ms;
+  --dur-reveal: 800ms;
+}
+
+/* ============================================================================
+   SEMANTIC ELEMENT DEFAULTS — apply these classes/elements directly.
+   ============================================================================ */
+
+.ds-page {
+  background: var(--bg-0);
+  color: var(--fg-2);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--lh-normal);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Display & headings — Space Grotesk, tight tracking */
+.ds-display {
+  font-family: var(--font-display);
+  font-size: var(--text-display);
+  font-weight: var(--w-bold);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-display);
+  color: var(--fg-1);
+}
+h1, .ds-h1 {
+  font-family: var(--font-display);
+  font-size: var(--text-h1);
+  font-weight: var(--w-bold);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-tight);
+  color: var(--fg-1);
+}
+h2, .ds-h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: var(--w-semi);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-tight);
+  color: var(--fg-1);
+}
+h3, .ds-h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  font-weight: var(--w-semi);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-tight);
+  color: var(--fg-1);
+}
+
+.ds-lead {
+  font-size: var(--text-lead);
+  line-height: var(--lh-relaxed);
+  color: var(--fg-2);
+}
+p, .ds-body { font-size: var(--text-body); line-height: var(--lh-normal); color: var(--fg-2); }
+.ds-small { font-size: var(--text-small); color: var(--fg-3); }
+
+/* Eyebrow — the system's signature label: tracked-out uppercase mono in accent */
+.ds-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-eyebrow);
+  font-weight: var(--w-medium);
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* Inline + block code */
+code, .ds-code {
+  font-family: var(--font-mono);
+  font-size: var(--text-mono-sm);
+  color: var(--accent-bright);
+  background: var(--accent-dim);
+  padding: 0.12em 0.4em;
+  border-radius: var(--radius-sm);
+}
+
+a, .ds-link { color: var(--accent); text-decoration: none; transition: color var(--dur-fast) var(--ease-soft); }
+a:hover, .ds-link:hover { color: var(--accent-bright); }
